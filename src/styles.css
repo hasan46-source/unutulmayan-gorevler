@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,650&family=Outfit:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --color-bg: transparent;
+  --color-surface: #121418;
+  --color-fg: #f4f7ff;
+  --color-muted: #d5d8e0;
+  --color-accent: #ffb020;
+  --color-ice: #d7dde6;
+  --color-line: #3a3f48;
+  --color-ok: #7dffb2;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background-color: #000;
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    font-size: 18px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .rise,
+    .sheet-in,
+    .veil-in {
+      animation: none;
+    }
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sheet {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes veil {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.rise {
+  animation: rise 0.7s ease both;
+}
+
+.sheet-in {
+  animation: sheet 0.35s ease both;
+}
+
+.veil-in {
+  animation: veil 0.25s ease both;
+}
